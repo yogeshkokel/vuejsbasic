@@ -1,14 +1,14 @@
 <template>
   <ul>
     <li v-for="(country,countryIndex) in countriesList" :key="countryIndex">
-        <img :src="country.flag" width="20px" height="20px"/>
-        {{ country.name }}
-        </li>
+      <img :src="country.flag" width="20px" height="20px" />
+      {{ country.name }}
+    </li>
   </ul>
 </template>
 
 <script>
-const axios = require("axios");
+import axios from "axios";
 export default {
   data() {
     return {
@@ -20,15 +20,15 @@ export default {
   },
   methods: {
     getCountriesList: function() {
-      let self = this;
+      // let self = this;
       axios
         .get(`https://restcountries.eu/rest/v2/all`)
-        .then(function(response) {
+        .then(response => {
           //successful response
           console.log(response);
-          self.countriesList = response.data;
+          this.countriesList = response.data;
         })
-        .catch(function(err) {
+        .catch(err => {
           //handle error
           console.log(err);
         })
