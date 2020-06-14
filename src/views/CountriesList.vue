@@ -2,7 +2,8 @@
   <ul>
     <li v-for="(country,countryIndex) in countriesList" :key="countryIndex">
       <img :src="country.flag" width="20px" height="20px" />
-      {{ country.name | uppercase }}
+      <!-- <router-link :to="'/country/'+country.name">{{ country.name | uppercase }}</router-link> -->
+      <span @click="onClickCountryName(country.name)">{{ country.name | uppercase }}</span>
     </li>
   </ul>
 </template>
@@ -35,6 +36,11 @@ export default {
         .finally(function() {
           //this is always executed
         });
+    },
+    onClickCountryName: function(name) {
+      this.$router.push({
+        path: "/country/"+name,
+      });
     }
   }
 };

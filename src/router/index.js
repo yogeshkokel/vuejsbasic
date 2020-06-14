@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import CountriesList from '../views/CountriesList.vue';
+import SingleCountry from '../views/SingleCountry.vue';
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,6 +24,11 @@ const routes = [
     path: '/countries',
     name: 'Countries',
     component: CountriesList
+  },
+  {
+    path: '/country/:countryname',
+    name: 'Country',
+    component: SingleCountry
   }
 ]
 
