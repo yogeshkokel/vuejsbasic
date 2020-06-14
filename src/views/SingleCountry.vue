@@ -2,6 +2,9 @@
   <div>
     <div>{{ this.countryName }}</div>
     <div>{{countryData}}</div>
+    <input type="text" v-model="name" placeholder="name" />
+    <input type="text" v-model="job" placeholder="job" />
+    <button @click="onSubmit()">Submit</button>
   </div>
 </template>
 
@@ -13,7 +16,10 @@ export default {
   data() {
     return {
       countryName: "",
-      countryData: null
+      countryData: null,
+      //
+      name: "",
+      job: ""
     };
   },
   mounted() {
@@ -35,6 +41,21 @@ export default {
         })
         .finally(function() {
           //this is always executed
+        });
+    },
+    onSubmit: function() {
+      let payload = {
+        name: this.name,
+        job: this.job
+      };
+      axios
+        .post("https://reqres.in/api/users", payload)
+        .then(function(response) {
+          console.log(response);
+          alert(response.data.id);
+        })
+        .catch(function(error) {
+          console.log(error);
         });
     }
   }
