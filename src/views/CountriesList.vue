@@ -2,7 +2,7 @@
   <ul>
     <li v-for="(country,countryIndex) in countriesList" :key="countryIndex">
       <img :src="country.flag" width="20px" height="20px" />
-      {{ country.name }}
+      {{ country.name | uppercase }}
     </li>
   </ul>
 </template>
